@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "maxim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "node-redis-pubsub": "^5.0.0",
+    "redis": "^4.7.0"
+  }
+}
