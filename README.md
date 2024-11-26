@@ -1,5 +1,7 @@
 # Distributed Job Queue System
 
+[Code Walkthrough](https://youtu.be/EQ1xny1F_vg)
+
 The job queue system is a distributed system that allows you to process jobs in a queue. It is designed to work with redis and is implemented using Node.js and Express.js. It provides three core functions: push, listen, and mark-completed.
 
 The push function is used to insert a new job into the queue, the listen function is used to retrieve a job for processing, and the mark-completed function is used to mark a job as completed.
@@ -31,6 +33,4 @@ lRem: Remove specific elements from a queue.
 
 ## API Endpoints
 
-1. 
-
-
+1.
