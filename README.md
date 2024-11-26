@@ -33,4 +33,128 @@ lRem: Remove specific elements from a queue.
 
 ## API Endpoints
 
-1.
+BASE URL - `/api/jobs`
+
+1. Push Job to Queue
+   URL: `/`
+   Method: `POST`
+   Description: Add a new job to a specified topic in the queue.
+   Request:
+
+Body:
+
+```json
+{
+  "job": {
+    "id": "job3",
+    "type": "email"
+  },
+  "topic": "emails"
+}
+```
+
+Response:
+
+```json
+{
+  "jobId": "emails:1732616363278",
+  "message": "Job added successfully"
+}
+```
+
+Fields:
+jobId: Unique identifier for the job.
+message: Confirmation message.
+
+2. Retrieve Job for Processing
+   URL: `/jobToRun`
+   Method: `GET`
+   Description: Retrieve the next available job from a specified topic and move it to the processing list.
+   Request:
+
+Query Parameters:
+
+```plaintext
+?topic=emails
+```
+
+Response:
+
+```json
+{
+  "job": {
+    "jobId": "emails:1732629187051",
+    "createdAt": 1732629187051,
+    "updatedAt": 1732632641123,
+    "retryCount": 0,
+    "id": "job2",
+    "type": "email"
+  },
+  "message": "Job to run"
+}
+```
+
+Fields:
+job: The job object to be processed.
+message: Status message.
+
+Error Response:
+
+No Job Available:
+
+```json
+{
+  "message": "No job available"
+}
+```
+
+3. Mark Job as Completed
+   URL: `/mark`
+   Method: `POST`
+   Description: Mark a job in the processing list as completed.
+   Request:
+
+Body:
+
+```json
+{
+  "jobId": "emails:1732616363278",
+  "topic": "emails"
+}
+```
+
+Response:
+
+```json
+{
+  "message": "Job completed successfully",
+  "job": {
+    "jobId": "emails:1732616363278",
+    "createdAt": 1732616363278,
+    "updatedAt": 1732616511348,
+    "retryCount": 0
+  }
+}
+```
+
+Fields:
+message: Confirmation message.
+job: The completed job object.
+Error Response:
+
+Job Not Found:
+
+```json
+{
+  "message": "Job not found or already processed"
+}
+```
+
+Error Handling
+`400 Bad Request`: Missing or invalid parameters.
+`404 Not Found`: No job available or specified job not found.
+
+Retry Mechanism (Background Process)
+Job Recovery:
+Jobs not marked as completed within 60 seconds are automatically retried.
+Jobs with more than 3 retries are removed from the system.
