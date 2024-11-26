@@ -20,3 +20,7 @@ The proposed solution is a distributed job queue system that uses redis as the u
 4. The system should be able to handle multiple topics.
 5. The system should be able to handle multiple jobs with the same topic.
 6. The system should be able to remove jobs that are not picked up from the processing queue within a 60s window. Unpicked jobs should be moved back to the main queue. The retry mechanism handles this.
+
+## Redis Implementation
+
+The redis implementation is done using the redis client library and redis-commander for the GUI interface. The client library is used to connect to the redis server and listen for events.

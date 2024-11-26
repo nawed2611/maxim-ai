@@ -3,14 +3,21 @@
   "name": "maxim",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev:tsc": "tsc --watch --preserveWatchOutput",
+    "dev:node": "node --enable-source-maps --watch dist/app.js",
+    "dev": "npm run dev:tsc & npm run dev:node"
   },
   "dependencies": {
     "express": "^4.21.1",
-    "node-redis-pubsub": "^5.0.0",
     "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
   }
 }
