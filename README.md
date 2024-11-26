@@ -24,3 +24,13 @@ The proposed solution is a distributed job queue system that uses redis as the u
 ## Redis Implementation
 
 The redis implementation is done using the redis client library and redis-commander for the GUI interface. The client library is used to connect to the redis server and listen for events.
+
+rPush: Add a job to the end of the queue.
+lPop: Remove and return the first element from a queue.
+lRem: Remove specific elements from a queue.
+
+## API Endpoints
+
+1. 
+
+

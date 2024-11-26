@@ -2,7 +2,7 @@ import {
   getJobToRun,
   markCompleted,
   pushJob,
-} from "../controller/job.controller.js";
+} from "../controllers/job.controller.js";
 import express, { Request, Response } from "express";
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.get("/jobToRun", async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-router.get("/markCompleted", (req: Request, res: Response) =>
+router.post("/markCompleted", (req: Request, res: Response) =>
   markCompleted(req, res)
 );
 
